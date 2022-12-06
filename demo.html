@@ -144,7 +144,7 @@ pre{
   </header>
     <div class="container-lg mx-auto text-white py-6 p-responsive">
     <h1 class="f00-light">Termino.js Demo</h1>
-    <p class="f3 mb-4">Create terminals in the browser with <a href="https://github.com/MarketingPipeline">MarketingPipeline</a>'s Termino.js library - great for making terminal animations, terminal like apps & terminal based games. </p><ul class="f5" style="padding-left: 20px;  !important; "><li>Super easy to use</li><li>Highly customizable to your own liking / needs!</li><li>Await / promise-based inputs & more</li>
+    <p class="f3 mb-4">Create terminals in the browser with <a href="https://github.com/MarketingPipeline">MarketingPipeline</a>'s Termino.js library - great for making terminal animations, terminal like apps & terminal based games. </p><ul class="f5"><li>Super easy to use</li><li>Highly customizable to your own liking / needs!</li><li>Await / promise-based inputs & more</li>
       <li>Add your own features / functions (including functions on keys or click events!)</li><li>Lightweight - no dependencies</li><li>Create as many terminals you want!</li><li> and LOTS more!</li> </ul> <br> 
  
      <p>A JavaScript library made by <a href="https://github.com/MarketingPipeline">@MarketingPipeline</a>. Source code is available on <a href="https://github.com/MarketingPipeline/Ace-Editor-Web-Component">GitHub</a>. License can be found <a href="https://github.com/MarketingPipeline/Ace-Editor-Web-Component/blob/main/LICENSE">here</a>.</p>
@@ -152,8 +152,8 @@ pre{
 </div>
 <div class="container-lg mx-auto py-6 p-responsive">
   <div class="markdown-body">
-    <h1>Demo</h1>  <ul class="f3 py-4">
-      <li>This demo includes a basic terminal animation & a real functional terminal based app (below) built using Termino.js from <a href="https://github.com/MarketingPipeline">MarketingPipeline</a></li>
+    <h1>Demo(s)</h1>  <ul class="f3 py-4">
+      <li>Theses demo includes a basic terminal animation & two real functional terminal based app's (below) built using Termino.js from <a href="https://github.com/MarketingPipeline">MarketingPipeline</a></li>
     </ul>
   </div>
   <br>
@@ -367,7 +367,7 @@ basicTerminalApp()
   }
 
 
-  <span class="hljs-keyword">let</span> YOUR_FUNCTIONS = [<span class="hljs-string">"SearchGitHubProfile()"</span>, <span class="hljs-string">"printInfoAboutDev()"</span>, <span class="hljs-string">"help"</span>, <span class="hljs-string">"demo_menu"</span>, <span class="hljs-string">"quit_term3inal"</span>]
+  <span class="hljs-keyword">let</span> YOUR_FUNCTIONS = [<span class="hljs-string">"SearchGitHubProfile()"</span>, <span class="hljs-string">"printInfoAboutDev()"</span>, <span class="hljs-string">"help"</span>, <span class="hljs-string">"demo_menu"</span>, <span class="hljs-string">"quit_terminal"</span>]
 
 
   <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">add_numbers</span>(<span class="hljs-params"></span>) </span>{
@@ -379,10 +379,10 @@ basicTerminalApp()
 
 
   <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">help</span>(<span class="hljs-params"></span>) </span>{
-    term3.output(<span class="hljs-string">"This Termino.js Instances Custom Functions Include - SearchGitHubProfile(), demo_menu, printInfoAboutDev(), help &amp; quit_term3inal"</span>)
+    term3.output(<span class="hljs-string">"This Termino.js Instances Custom Functions Include - SearchGitHubProfile(), demo_menu, printInfoAboutDev(), help &amp; quit_terminal"</span>)
   }
 
-  <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">quit_term3inal</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">quit_terminal</span>(<span class="hljs-params"></span>) </span>{
     term3.output(<span class="hljs-string">"Quitting Terminal..."</span>)
     term3.delay(<span class="hljs-number">3000</span>)
     term3.kill()
