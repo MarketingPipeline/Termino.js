@@ -1,6 +1,6 @@
 /// LIVE EXAMPLES / DEMOS FOR TERMINO.JS
 
-import {Termino} from 'https://cdn.jsdelivr.net/gh/MarketingPipeline/Termino.js@v1.0.0/dist/termino.min.js';
+import {Termino} from 'https://cdn.jsdelivr.net/gh/MarketingPipeline/Termino.js@main/dist/termino.min.js';
 // Termino.js - Terminal Animation Demo 
 
 //// Render animations when in view using Intersection Observer
