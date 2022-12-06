@@ -1,0 +1,49 @@
+{
+  "name": "@MarketingPipeline/terminojs",
+  "version": "1.0.0",
+  "description": "A JavaScript library for creating web based terminals (with your own custom commands!) - great for creating apps, games & animations in a terminal like enviorement in the browsers",
+  "main": "dist/termino.min.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "esbuild src/termino.js --outfile=dist/termino.min.js --bundle --minify",
+    "dev": "esbuild src/termino.js --outfile=dist/termino.min.js --bundle --watch"
+  },  
+  "keywords": [
+    "terminal",
+    "web-terminal",
+    "web terminal",
+    "javascript",
+    "terminal-animations",
+    "browser",
+    "js",
+    "async",
+    "await",
+    "promise-based",
+    "terminal-games",
+    "cli",
+    "command-line",
+    "console",
+    "pty",
+    "shell",
+    "ssh",
+    "styles",
+    "terminal-emulator",
+    "terminal",
+    "tty",
+    "web-shell",
+    "bash-emulator",
+    "vt100"
+  ],
+  "author": "https://github.com/MarketingPipeline",
+  "license": "MIT",
+  "repository": "github:MarketingPipeline/Termino.js",
+  "devDependencies": {
+    "esbuild": "^0.15.5"
+  },  
+  "bugs": {
+    "url": "https://github.com/MarketingPipeline/Termino.js/issues"
+  },
+  "homepage": "https://github.com/MarketingPipeline/Termino.js#readme"
+}
