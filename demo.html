@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Live Demo | Termino.js</title>
+
+<link rel="stylesheet" href="https://unpkg.com/@primer/css/dist/primer.css">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/github.min.css">
+  
+  <script src="/assets/termino-demos.min.js"></script>  
+<meta name="author" content="github.com/marketingpipeline">
+<meta name="description" content="Termino.js Live Demo">
+<meta name="keywords" content="terminal, javascript, js, npm, opensource, github, web-terminal, html, frontend, web-shell, ssh, console, command-line, command-line apps, front-end">
+ 
+<meta property="og:title" content="Termino.js Demo" />
+<meta property="og:description" content="Termino.js Live Demo" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+ /* styling used  for the Termino.js - terminal demo(s) */   
+.repl {
+    text-shadow: none;
+    color: #333;
+    background: #f8f8f8;
+    padding: 0;
+    text-align: left;
+    width: 600px;
+    margin: 50px auto;
+    border-radius: 3px;
+    border: 1px solid #ddd;
+    overflow:hidden;
+}
+
+.repl code {
+    height: 200px;
+    overflow-y: scroll;
+}
+
+pre {
+    margin: 0;
+}
+
+.termino-console {
+    padding: 11px 16px;
+    display: block;
+}
+
+.termino-input-container {
+    display: flex;
+}
+
+.termino-input-container > * {
+    outline: none;
+    border: none;
+    white-space: pre-wrap;
+    font-family: monospace;
+    color: #444;
+    background: #f0f0f0;
+    min-height: 14px; /* minimum one line */
+    padding: 10px;
+    margin: 0;
+    border-radius: 0 0 3px 3px;
+    border-top: 1px solid #ddd;
+}
+
+.termino-input {
+    flex: 1;
+    height: 100%; /* start off one line tall */
+    padding-left: 0;
+}
+
+.termino-prompt {a
+    font-weight: bold;
+    padding: 8px 10px;
+}
+
+@media screen and (max-width : 800px) {
+
+    .repl {
+        width: 100%;
+    }
+
+}
+
+.lua {
+  resize:none;
+  overflow:hidden;
+}
+
+pre{
+     word-break: break-all;
+    white-space: pre-line;
+}
+
+.repl code{
+    scroll-behavior:smooth;
+}
+
+/* hide scrollbar but allow scrolling */
+.repl code {
+  -ms-overflow-style: none; /* for Internet Explorer, Edge */
+  scrollbar-width: none; /* for Firefox */
+  overflow-y: scroll; 
+}
+
+.repl code::-webkit-scrollbar {
+  display: none; /* for Chrome, Safari, and Opera */
+}
+
+
+.loading:after {
+  content: ' .';
+  animation: dots 1s steps(5, end) infinite;
+}
+
+@keyframes dots {
+  0%, 20% {
+    color: rgba(0,0,0,0);
+    text-shadow:
+      .25em 0 0 rgba(0,0,0,0),
+      .5em 0 0 rgba(0,0,0,0);}
+  40% {
+    color: white;
+    text-shadow:
+      .25em 0 0 rgba(0,0,0,0),
+      .5em 0 0 rgba(0,0,0,0);}
+  60% {
+    text-shadow:
+      .25em 0 0 white,
+      .5em 0 0 rgba(0,0,0,0);}
+  80%, 100% {
+    text-shadow:
+      .25em 0 0 white,
+      .5em 0 0 white;}}
+  </style>
+  
+</head>
+<div class="color-bg-canvas-inset pb-6">
+  <header class="container-lg mx-auto p-responsive d-flex flex-items-center flex-wrap flex-md-nowrap pt-3 pb-6">
+    <div>
+      <a class="text-white mr-3" href="https://github.com/MarketingPipeline/Termino.js/wiki">Docs</a>
+      <a class="text-white mr-3" href="https://github.com/MarketingPipeline/Termino.js/blob/master/CHANGELOG.md">Changelog</a>
+      <a class="text-white mr-3" href="https://jdeliver">CDN</a>
+    </div>
+  </header>
+    <div class="container-lg mx-auto text-white py-6 p-responsive">
+    <h1 class="f00-light">Termino.js Demo</h1>
+    <p class="f3 mb-4">Create terminals in the browser with <a href="https://github.com/MarketingPipeline">MarketingPipeline</a>'s Termino.js library - great for making terminal animations, terminal like apps & terminal based games. </p><ul class="f5" style="padding-left: 20px;  !important; "><li>Super easy to use</li><li>Highly customizable to your own liking / needs!</li><li>Await / promise-based inputs & more</li>
+      <li>Add your own features / functions (including functions on keys or click events!)</li><li>Lightweight - no dependencies</li><li>Create as many terminals you want!</li><li> and LOTS more!</li> </ul> <br> 
+ 
+     <p>A JavaScript library made by <a href="https://github.com/MarketingPipeline">@MarketingPipeline</a>. Source code is available on <a href="https://github.com/MarketingPipeline/Ace-Editor-Web-Component">GitHub</a>. License can be found <a href="https://github.com/MarketingPipeline/Ace-Editor-Web-Component/blob/main/LICENSE">here</a>.</p>
+  
+</div>
+<div class="container-lg mx-auto py-6 p-responsive">
+  <div class="markdown-body">
+    <h1>Demo</h1>  <ul class="f3 py-4">
+      <li>This demo includes a basic terminal animation & a real functional terminal based app (below) built using Termino.js from <a href="https://github.com/MarketingPipeline">MarketingPipeline</a></li>
+    </ul>
+  </div>
+  <br>
+  <center><h3>Termino.js - Terminal Animation Demo</h3></center>
+  <section class="section--standalone" id="Example_Terminal_1">
+    <div class="repl">
+      <pre><code class="termino-console"></code></pre>
+        <div class="termino-input-container">
+         
+            <label id="termino-prompt" for="termino-input">→ </label>
+            <textarea  class="termino-input"   rows="1" wrap="hard" placeholder="Type something here"></textarea>
+        </div>
+    </div> 
+     <center><details><summary>View Source</summary>
+   <pre>	<code class="javascript hljs" style="text-align:left;">
+<span class="hljs-comment">// Termino.js - Terminal Animation Demo </span>
+<span class="hljs-keyword">import</span> {Termino} <span class="hljs-keyword">from</span> <span class="hljs-string">'https://cdn.jsdelivr.net/gh/MarketingPipeline/Termino.js@v1.0.0/dist/termino.min.js'</span>;
+
+<span class="hljs-comment">//// Render animations when in view using Intersection Observer</span>
+(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">var</span> observer = <span class="hljs-keyword">new</span> IntersectionObserver(onIntersect);
+
+
+  observer.observe(<span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"Example_Terminal_1"</span>));
+
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">onIntersect</span>(<span class="hljs-params">entries</span>) </span>{
+    entries.forEach(<span class="hljs-function">(<span class="hljs-params">entry</span>) =&gt;</span> {
+      <span class="hljs-keyword">if</span> (entry.target.getAttribute(<span class="hljs-string">"terminal-processed"</span>) || !entry.isIntersecting)
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+      entry.target.setAttribute(<span class="hljs-string">"terminal-processed"</span>, <span class="hljs-literal">true</span>);
+      renderTerminal_Animation()
+    });
+  }
+})();
+
+
+<span class="hljs-comment">// initialize a Terminal via Termino.js   </span>
+
+<span class="hljs-keyword">let</span> term = Termino(<span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"Example_Terminal_1"</span>))
+
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">renderTerminal_Animation</span>(<span class="hljs-params"></span>) </span>{
+
+  <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">animation</span>(<span class="hljs-params"></span>) </span>{
+    term.echo(<span class="hljs-string">"hello world"</span>)
+    <span class="hljs-keyword">await</span> term.delay(<span class="hljs-number">2000</span>) <span class="hljs-comment">// delay output 2 seconds</span>
+    term.add_element(<span class="hljs-string">"loading-text"</span>, <span class="hljs-string">`Fake loading animation`</span>, <span class="hljs-string">"loading"</span>) <span class="hljs-comment">// add HTML element with html text "loading" &amp; class-name "loading" (shows the loading carot via CSS).</span>
+    <span class="hljs-keyword">await</span> term.delay(<span class="hljs-number">5000</span>) <span class="hljs-comment">// delay output 5 seconds</span>
+    term.output(<span class="hljs-string">"Animation fun has 'loaded'"</span>)
+    term.remove_element(<span class="hljs-string">"loading-text"</span>) <span class="hljs-comment">// remove HTML element added earlier</span>
+    term.echo(<span class="hljs-string">"what will you make with termino.js?"</span>)
+  }
+
+  animation()
+
+}
+	</code>
+</pre>
+    </details>
+       <br>
+</section>
+<br>
+    <center><h3>Termino.js - Terminal App Demo (Basic)</h3></center>
+
+<section class="section--standalone" id="Example_Terminal_2">
+    <div class="repl">
+        <code class="termino-console"><pre></pre></code>
+        <div class="termino-input-container">
+         
+            <label id="termino-prompt" for="termino-input">→ </label>
+            <textarea class="termino-input"   rows="1" wrap="hard" placeholder="Type something here"></textarea>
+        </div>
+    </div> 
+</section>
+<br>
+  <center><details><summary>View Source</summary>
+  <pre><code class="javascript hljs" style="text-align:left;">
+<span class="hljs-comment">// Termino.js - Terminal App Demo (Basic)</span>
+<span class="hljs-keyword">import</span> {Termino} <span class="hljs-keyword">from</span> <span class="hljs-string">'https://cdn.jsdelivr.net/gh/MarketingPipeline/Termino.js@v1.0.0/dist/term2ino.min.js'</span>;
+
+<span class="hljs-comment">// initialize a Terminal via Termino.js   </span>
+<span class="hljs-keyword">let</span> term2 = Termino(<span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"Example_Terminal_2"</span>))
+
+
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">print_hello_world</span>(<span class="hljs-params"></span>) </span>{
+  term2.output(<span class="hljs-string">"hello world"</span>)
+}
+
+
+
+<span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">basicTerminalApp</span>(<span class="hljs-params"></span>) </span>{
+  term2.output(<span class="hljs-string">`1. Print Hello Wolrd
+2. Add Two Numbers
+3. Exit`</span>)
+
+  <span class="hljs-comment">// call Termino.js /  your term2inal for inital input</span>
+  <span class="hljs-keyword">let</span> term2value = <span class="hljs-keyword">await</span> term2.input(<span class="hljs-string">"What would you like to do?"</span>)
+
+
+  <span class="hljs-comment">// function to add numbers</span>
+  <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">add_numbers</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">let</span> number1 = <span class="hljs-keyword">await</span> term2.input(<span class="hljs-string">"First number to add"</span>)
+    <span class="hljs-keyword">let</span> number2 = <span class="hljs-keyword">await</span> term2.input(<span class="hljs-string">"Second number to add"</span>)
+    term2.output(<span class="hljs-built_in">Number</span>(number1) + <span class="hljs-built_in">Number</span>(number2))
+  }
+
+
+
+  <span class="hljs-keyword">if</span> (term2value === <span class="hljs-string">"1"</span>) {
+    <span class="hljs-keyword">await</span> print_hello_world() <span class="hljs-comment">// example of running your own custom function</span>
+  }
+
+  <span class="hljs-keyword">if</span> (term2value === <span class="hljs-string">"2"</span>) {
+    <span class="hljs-keyword">await</span> add_numbers() <span class="hljs-comment">// example of running your own custom function</span>
+  }
+
+  <span class="hljs-keyword">if</span> (term2value === <span class="hljs-string">"3"</span>) {
+    term2.output(<span class="hljs-string">"You chose option 3, exiting term2inal"</span>)
+    <span class="hljs-keyword">await</span> term2.delay(<span class="hljs-number">2000</span>)
+    term2.kill() <span class="hljs-comment">// exit term2inal</span>
+  }
+
+  <span class="hljs-keyword">if</span> (term2value != <span class="hljs-string">"1"</span> &amp;&amp; term2value != <span class="hljs-string">"2"</span> &amp;&amp; term2value != <span class="hljs-string">"3"</span>) {
+    term2.output(<span class="hljs-string">"Invalid choice"</span>)
+  }
+
+  <span class="hljs-comment">// after called  - repeat function again (if not exit menu)</span>
+  <span class="hljs-keyword">if</span> (term2value != <span class="hljs-string">"3"</span>) {
+    setTimeout(basicTerminalApp, term2value)
+  }
+
+}
+
+basicTerminalApp()
+	</code>
+</pre>
+    </details>
+    
+  </center>
+    
+    
+ <br>
+    <center><h3>Termino.js - Terminal App Demo (Advanced)</h3></center>
+
+<section class="section--standalone" id="Example_Terminal_3">
+    <div class="repl">
+        <code class="termino-console"><pre></pre></code>
+        <div class="termino-input-container">
+         
+            <label id="termino-prompt" for="termino-input">→ </label>
+            <textarea  class="termino-input"   rows="1" wrap="hard" placeholder="Type something here"></textarea>
+        </div>
+    </div> 
+</section>
+<br>
+  <center><details><summary>View Source</summary>
+  <pre><code class="javascript hljs" style="text-align:left;">
+<span class="hljs-comment">// Termino.js - Terminal App Demo (Advanced)</span>
+<span class="hljs-keyword">import</span> {Termino} <span class="hljs-keyword">from</span> <span class="hljs-string">'https://cdn.jsdelivr.net/gh/MarketingPipeline/Termino.js@v1.0.0/dist/term3ino.min.js'</span>;
+
+  <span class="hljs-comment">// initialize a Terminal via Termino.js   </span>
+  <span class="hljs-keyword">let</span> term3 = Termino(<span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"Example_Terminal_3"</span>))
+
+  <span class="hljs-comment">//// YOUR COOL CUSTOM FUNCTIONS BELOW FOR YOUR APP.</span>
+
+  <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">SearchGitHubProfile</span>(<span class="hljs-params"></span>) </span>{
+
+
+    <span class="hljs-keyword">try</span> {
+
+      <span class="hljs-keyword">let</span> username = <span class="hljs-keyword">await</span> term3.input(<span class="hljs-string">"What profile would you like to search?"</span>)
+
+      term3.echo(username)
+      <span class="hljs-keyword">if</span> (!username) {
+        <span class="hljs-keyword">throw</span> {
+          <span class="hljs-attr">message</span>: <span class="hljs-string">"No username was provided"</span>
+        }
+      }
+      <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> fetch(<span class="hljs-string">`https://api.github.com/users/<span class="hljs-subst">${username}</span>`</span>)
+      <span class="hljs-keyword">let</span> data = <span class="hljs-keyword">await</span> response.json();
+      <span class="hljs-keyword">if</span> (data.login === <span class="hljs-literal">undefined</span>) {
+        <span class="hljs-keyword">throw</span> {
+          <span class="hljs-attr">message</span>: <span class="hljs-string">"profile was not found"</span>
+        }
+      }
+
+      term3.output(<span class="hljs-string">`You searched for: <span class="hljs-subst">${data.login}</span>, they have <span class="hljs-subst">${data.followers}</span> followers, &amp; <span class="hljs-subst">${data.public_repos}</span> public repos`</span>, )
+    } <span class="hljs-keyword">catch</span> (error) {
+      term3.output(<span class="hljs-string">`Failed to get github info <span class="hljs-subst">${error.message}</span>`</span>)
+    }
+
+
+
+  }
+
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">ascii_art</span>(<span class="hljs-params"></span>) </span>{
+    term3.output(<span class="hljs-string">`⠀⠀⠀⠀⠀⠀⠀⢀⣠⣤⣤⣶⣶⣶⣶⣤⣤⣄⡀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⢀⣤⣾⣿⣿⠿⠟⠛⠛⠛⠛⠻⠿⣿⣿⣷⣤⡀⠀⠀⠀⠀
+⠀⠀⠀⣴⣿⣿⠟⠋⠁⠀⠀⠀⠀⠀⠀⠀⠀⠈⠙⠻⣿⣿⣦⠀⠀⠀
+⠀⢀⣾⣿⡿⠁⠀⠀⣴⣦⣄⠀⠀⠀⠀⠀⣀⣤⣶⡀⠈⢿⣿⣷⡀⠀
+⠀⣾⣿⡟⠁⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠃⠀⠈⢻⣿⣷⠀
+⢠⣿⣿⠁⠀⠀⠀⣠⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦⠀⠀⠈⣿⣿⡄
+⢸⣿⣿⠀⠀⠀⢰⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⠀⠀⣿⣿⡇
+⠘⣿⣿⡦⠤⠒⠒⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠧⠤⢴⣿⣿⠃          TERMINO.JS
+⠀⢿⣿⣧⡀⠀⢤⡀⠙⠻⠿⣿⣿⣿⣿⣿⡿⠟⠋⠁⠀⢀⣼⣿⡿⠀        COOL ASCII ART
+⠀⠈⢿⣿⣷⡀⠈⢿⣦⣤⣾⣿⣿⣿⣿⣿⣷⣄⠀⠀⢀⣾⣿⡿⠁⠀
+⠀⠀⠀⠻⣿⣿⣦⣄⡉⣿⣿⢿⣿⠉⢻⣿⢿⣿⣠⣴⣿⣿⠟⠀⠀⠀
+⠀⠀⠀⠀⠈⠛⢿⣿⣿⣿⣧⣼⣿⣤⣾⣷⣶⣿⣿⡿⠛⠁⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠈⠙⠛⠛⠿⠿⠿⠿⠛⠛⠋⠁⠀⠀⠀⠀⠀⠀⠀`</span>)
+  }
+
+
+  <span class="hljs-keyword">let</span> YOUR_FUNCTIONS = [<span class="hljs-string">"SearchGitHubProfile()"</span>, <span class="hljs-string">"printInfoAboutDev()"</span>, <span class="hljs-string">"help"</span>, <span class="hljs-string">"demo_menu"</span>, <span class="hljs-string">"quit_term3inal"</span>]
+
+
+  <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">add_numbers</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">let</span> number1 = <span class="hljs-keyword">await</span> term3.input(<span class="hljs-string">"First number to add"</span>)
+    <span class="hljs-keyword">let</span> number2 = <span class="hljs-keyword">await</span> term3.input(<span class="hljs-string">"Second number to add"</span>)
+    term3.output(<span class="hljs-built_in">Number</span>(number1) + <span class="hljs-built_in">Number</span>(number2))
+  }
+
+
+
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">help</span>(<span class="hljs-params"></span>) </span>{
+    term3.output(<span class="hljs-string">"This Termino.js Instances Custom Functions Include - SearchGitHubProfile(), demo_menu, printInfoAboutDev(), help &amp; quit_term3inal"</span>)
+  }
+
+  <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">quit_term3inal</span>(<span class="hljs-params"></span>) </span>{
+    term3.output(<span class="hljs-string">"Quitting Terminal..."</span>)
+    term3.delay(<span class="hljs-number">3000</span>)
+    term3.kill()
+  }
+
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">printInfoAboutDev</span>(<span class="hljs-params"></span>) </span>{
+    term3.output(<span class="hljs-string">"Jared is the creator of Termino.js &amp; the founder of the GitHub organization </span><a href="https://marketingpipeline.com"><span class="hljs-string">MarketingPipeline</span></a><span class="hljs-string">, if you would like to hire him for any work. Feel free to reach him on GitHub - any client referals are apprecitated as well."</span>)
+  }
+
+
+  <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">demo_menu</span>(<span class="hljs-params"></span>) </span>{
+    term3.output(<span class="hljs-string">`1. Print Hello World 
+2. Add Two Numbers
+3. Show ASCII Art`</span>)
+
+    <span class="hljs-keyword">let</span> term3value = <span class="hljs-keyword">await</span> term3.input(<span class="hljs-string">"What would you like to do?"</span>)
+    <span class="hljs-keyword">if</span> (term3value === <span class="hljs-string">"1"</span>) {
+      term3.output(<span class="hljs-string">"Hello World"</span>)
+    }
+
+    <span class="hljs-keyword">if</span> (term3value === <span class="hljs-string">"2"</span>) {
+      term3.echo(term3value)
+      <span class="hljs-keyword">await</span> add_numbers()
+    }
+
+    <span class="hljs-keyword">if</span> (term3value === <span class="hljs-string">"3"</span>) {
+      ascii_art()
+    }
+
+    <span class="hljs-keyword">if</span> (term3value != <span class="hljs-string">"1"</span> &amp;&amp; term3value != <span class="hljs-string">"2"</span> &amp;&amp; term3value != <span class="hljs-string">"3"</span>) {
+      term3.output(<span class="hljs-string">"Invalid choice"</span>)
+    }
+
+
+  }
+
+  <span class="hljs-comment">/// END OF YOUR COOL CUSTOM FUNCTIONS</span>
+
+
+
+  <span class="hljs-comment">// MESSAGES TO PRINT AT START!</span>
+  term3.output(<span class="hljs-string">"Your Cool Terminal Copyright Here"</span>)
+
+  term3.output(<span class="hljs-string">"You can list all the functions available by typing 'help'"</span>)
+
+
+
+  <span class="hljs-comment">/// </span>
+  <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">AdvancedDemo</span>(<span class="hljs-params"></span>) </span>{
+
+
+    <span class="hljs-comment">// call the term3inal for inital input</span>
+    <span class="hljs-keyword">let</span> terminal_msg = <span class="hljs-keyword">await</span> term3.input(<span class="hljs-string">""</span>)
+
+
+    <span class="hljs-comment">/// cool way to execute some functions! (you can make your own way of executing them!)  </span>
+    <span class="hljs-keyword">if</span> ((YOUR_FUNCTIONS.includes(terminal_msg))) {
+
+
+      <span class="hljs-comment">// run term3inal commands with () example - hello_world() </span>
+      <span class="hljs-keyword">if</span> (terminal_msg.endsWith(<span class="hljs-string">'()'</span>)) {
+        <span class="hljs-keyword">await</span> <span class="hljs-built_in">eval</span>(terminal_msg)
+      } <span class="hljs-keyword">else</span> {
+        <span class="hljs-comment">// run term3inal commands without () example - hello_world </span>
+        <span class="hljs-keyword">await</span> <span class="hljs-built_in">eval</span>(terminal_msg + <span class="hljs-string">"()"</span>)
+      }
+
+    } <span class="hljs-keyword">else</span> {
+      <span class="hljs-comment">//  Handle error if your function is not found</span>
+      <span class="hljs-keyword">if</span> (terminal_msg.length != <span class="hljs-number">0</span>) {
+        term3.output(terminal_msg + <span class="hljs-string">" is not found"</span>)
+      }
+
+    }
+
+    <span class="hljs-comment">// after called  - repeat function again</span>
+    setTimeout(AdvancedDemo, terminal_msg);
+
+  }
+
+  AdvancedDemo()
+	</code></pre>
+    </details>
+    
+  </center>
+
+    
+</div>
+
+<footer>
+  <hr>
+  <center><p>Termino.js was originally created by Jared Van Valkengoed at <br> <a href="https://github.com/MarketingPipeline">MarketingPipeline</a></p></center>
+  </footer>
+	</html>
