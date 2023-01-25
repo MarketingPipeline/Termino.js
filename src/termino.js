@@ -1,46 +1,6 @@
-/**!
- * @license Termino.js - A JavaScript library to make custom terminals in the browser with support for executing your own custom functions!
- * VERSION: 1.0.0
- * LICENSED UNDER MIT LICENSE
- * MORE INFO CAN BE FOUND AT https://github.com/MarketingPipeline/Termino.js/
- */
 
 
-
-/* DEV & CONTRIBUTOR NOTES IE: TODO LIST -
-
-- NEED TO IMPROVE / WRITE DOCUMENTATION FOR LIBRARY - URGENT TASK NEEDS HELP BIG TIME!
-  - CREATE DOCUMENATION WEBSITE HOSTED VIA GITHUB PAGES BRANCH
-  - REMOVE WIKI FROM REPO.
-- NEED TO IMPROVE USAGE OF LOOPING INPUTS / ASKING USER FOR INPUTS CONSTANTLY...? (ANY SUGGESTIONS APPRECIATED)  
-- SUPPORT FOR MULTIPLE KEYBINDS / KEYBOARD SHORT CUTS (VIA MOUSETRAP ON NPM / GITHUB)
-- POSSIBILY MAKE PLUGINS / FUNCTIONS THAT CAN BE SHARED.
-  - CREATE TEMPLATE TO USE PLUGIN / CREATE PLUGINS 
-  - PLUGIN FOR CREATING TERMINAL ANIMATIONS VIA A TYPEWRITER / TYPING LIBRARY ETC.. 
-  - PLUGIN FOR PLAYING PRE-RECORDED TERMINAL ANIMATIONS. 
-- IMPROVE ERROR HANDLING (CHECK IF PASSED PROPER ARGUMENTS - CHECK IF VARIABLE IS ARRAY TYPE / JSON TYPE ETC...)
-- CODE CLEANING - USE CONST INSTEAD OF LET VARIABLES WHEN CAN.
-  - CLEAN / IMPROVE FILTER FUNCTION. 
-- REMOVE EVENT HANDLERS WHEN TERMINAL INSTANCE IS KILLED. 
-- MAKE THIS A EXPORT THIS AS WELL & GLOBAL IN SAME SCRIPT....? (DISCUSSION) 
-- INTERATION OBERSERVER FOR ANIMATIONS / POSSIBLY ALL INSTANCES. 
-- DOM OBSERVER (FOR NEW TERMINALS IN DOM) 
-- ADD ANY POLYFILL SUPPORTS NEEDED / UNTHOUGHT OF. 
-- CREATE TESTS + ACTION / WORKFLOW
-  - BROWSER AUTOMATION TESTS VIA PUPPETEER ETC (CHECK ALL DEVICES / BROWSER COMPABILITY + POSSIBLY SCREENSHOTS). 
-  - OTHER TESTS. 
-  - CREATE ACTION THAT AUTO TESTS ON PR.
-  - IF ANYONE COULD HELP WRITING TESTS / THESE WOULD BE APPRECIATED. 
-- LOTS OF OTHER IMPROVEMENTS THAT CAN BE MADE THO THIS. IF YOU ARE WILLING TO IMPROVE IT. FEEL FREE! :)
-
-
-
-*/
-
-// POLYFILL SUPPORT (AUTO-DETECTED ON LOAD FOR DEVICE)
-import 'https://polyfill.io/v3/polyfill.min.js?features=Array.prototype.filter,console,document,JSON,Promise'
-
-export function Termino(terminalSelector, keyCodes, settings) {
+function Termino(terminalSelector, keyCodes, settings) {
 
   try {
     // DEFAULT TERMINAL SETTINGS   
@@ -71,7 +31,23 @@ export function Termino(terminalSelector, keyCodes, settings) {
       }
     }
 
+    // ALLOW DEVELOPERS TO CONNECT TO A NODE.JS PROCRESS 
+    function isCommandLine() {
+    return typeof process !== 'undefined' && process.stdout && process.stdin;
+    }
+    
+    
+    
+    
+    /// FUNCTION TO DELAY TERMINAL OUTPUTS / ECHO ETC (AWAIT / PROMISE BASED) - EXAMPLE : await term.delay(xxx) ...     
+    const termDelay = ms => new Promise(res => setTimeout(res, ms));
 
+    
+    // CHECK IF THIS TERMINO.JS APP IS RUNNING A WEB BASED TERMINAL OR A NODE.JS TERMINAL 
+     /* What does this do? 
+     ** Termino.js allows functions created for your web based terminal with termino.js to be used in a node.js CLI app!
+     */ 
+    if(!isCommandLine()){
     let terminal_console = terminalSelector.querySelector(DEF_SETTINGS.terminal_output)
 
 
@@ -153,7 +129,7 @@ export function Termino(terminalSelector, keyCodes, settings) {
       }
     });
 
-
+   
 
 
     // TERMINAL INPUT STATE / TERMINAL PROMPT FUNCTION  
@@ -257,9 +233,6 @@ export function Termino(terminalSelector, keyCodes, settings) {
       terminalSelector.querySelector(DEF_SETTINGS.terminal_input).value = ""
     }
 
-    /// FUNCTION TO DELAY TERMINAL OUTPUTS / ECHO ETC (AWAIT / PROMISE BASED) - EXAMPLE : await term.delay(xxx) ...     
-    const termDelay = ms => new Promise(res => setTimeout(res, ms));
-
 
 
     /// FUNCTION TO SCROLL TERMINAL TO THE BOTTOM    
@@ -360,7 +333,7 @@ export function Termino(terminalSelector, keyCodes, settings) {
 
       }
 
-    } /// DEFAULT TERMINO FUNCTIONS FOR DEVELOPER USAGE
+    } /// DEFAULT TERMINO FUNCTIONS FOR DEVELOPER USAGE - These can only be used for a (WEB BASED TERMINAL)
     return {
       echo: termEcho, // ECHO MESSAGE TO TERM WITH CAROT
       output: termOutput, // ECHO MESSAGE TO TERM WITHOUT CAROT
@@ -374,7 +347,54 @@ export function Termino(terminalSelector, keyCodes, settings) {
       add_element: addElementWithID, // ADD HTML ELEMENT WITH ID TO TERMINAL,
       remove_element: removeElementWithID, // REMOVE HTML ELEMENT WITH ID TO TERMINAL,
       kill: termKill // KILL THE TERMIMAL - IE.. SET INPUT TO DISABLED & CLEAR THE TERMINAL.
-    };
+    }} else{
+      /// THIS IS THE COMMAND-LINE CONNECTOR FOR NODE.JS
+      // ie; WRITE YOUR TERMINO.JS APP IN BROWSER & BE ABLE TO USE THEM IN NODE.JS VIA A TERMINAL TOO!
+      
+      
+      // DEFAULT FUNCTION TO ECHO TO TERMINAL (WITH PROMPT)
+      function termEcho(value){
+        process.stdout.write(`${DEF_SETTINGS.prompt}${value}` + '\n');
+      }
+      
+      
+        // DEFAULT FUNCTION TO ECHO TO TERMINAL (WITHOUT PROMPT)
+       function termOutput(value){
+        process.stdout.write(`${value}` + '\n');
+      }
+      
+      
+       /// DEFAULT FUNCTION TO KILL / EXIT TERMINAL
+      function termKill(){
+        process.exit();
+      }
+      
+      
+       // FUNCTION TO ASK QUESTION VIA TERMINAL
+      function termInput(question) {
+       return new Promise(function(resolve, reject) {
+       process.stdin.resume();
+       process.stdout.write(question);
+       process.stdin.once('data', function(data) {
+              // echo value to terminal 
+             // termOutput(data.toString().trim()) // DISABLED as of now looks weird... 
+             
+             // resolve that promise!
+              resolve(data.toString().trim());
+        });
+       });
+      } 
+      
+      /// DEFAULT TERMINO FUNCTIONS FOR DEVELOPER USAGE -  These can only be used for a (NODE.JS TERMINAL APP)
+      return { 
+      echo: termEcho, // ECHO MESSAGE TO TERM WITH CAROT
+      output: termOutput, // ECHO MESSAGE TO TERM WITHOUT CAROT
+      delay: termDelay, // DELAY FUNCTION BY X VALUE OF SECONDS
+      input: termInput, // ASK USER QUESTION & RETURN VALUE
+      kill: termKill // KILL / EXIT THE TERMIMAL APP.
+    }
+      
+    }
   } catch (error) {
     // Something went wrong! 
     console.error(`Termino.js Error: ${error.message}`)
@@ -384,6 +404,53 @@ export function Termino(terminalSelector, keyCodes, settings) {
   }
 }
 
-if (typeof document === 'undefined') {
-  console.error("Termino.js is only supported for the browser")
+
+
+// Example of a Termio.js app that works via Node.js CLI or in the browser! 
+let T;
+if (typeof process !== 'undefined'){
+  // Node.js based Termino.js app. 
+   T = Termino()
+} else{
+ // Browser based Termino.js app.  
+   T = Termino(".boobies") 
+  
 }
+
+T.echo("Cool")
+
+
+let YOUR_FUNCTIONS = ['exit']
+
+async function exit(){
+T.output("Exiting the Termino.js App")
+await T.delay(2000)
+T.kill()
+}
+
+async function AdvancedDemo() {
+
+
+// call the terminal for inital input
+let terminal_msg = await T.input("Enter a command:")
+
+
+/// cool way to execute some functions! (you can make your own way of executing them!)
+if ((YOUR_FUNCTIONS.includes(terminal_msg))) {
+
+await eval(terminal_msg + "()")
+
+} else {
+// Handle error if your function is not found
+if (terminal_msg.length != 0) {
+T.output(terminal_msg + ": command not found")
+}
+
+}
+
+// after called - repeat function again
+AdvancedDemo()
+
+}
+
+AdvancedDemo()
