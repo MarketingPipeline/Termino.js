@@ -4,7 +4,9 @@ All notable changes to Termino.js will be documented in this file.
 
 ## [1.0.1] - (Mar 3, 2023)
 
-Updated & fixed ```package.json```. Module type was missing.
+Updated & fixed ```package.json```. 
+
+Module type was missing.
 
 ## [1.0.0] - (Dec 6, 2022)
 
