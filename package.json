@@ -1,6 +1,7 @@
 {
+  "type": "module",
   "name": "@MarketingPipeline/terminojs",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A JavaScript library for creating web based terminals (with your own custom commands!) - great for creating apps, games & animations in a terminal like enviorement in the browsers",
   "main": "dist/termino.min.js",
   "files": [
