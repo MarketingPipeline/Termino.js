@@ -243,7 +243,7 @@ basicTerminalApp()
 
     } else {
       //  Handle error if your function is not found
-      if (term3inal_msg.length === 0) {
+      if (term3inal_msg) {
         term3.output(term3inal_msg + " is not found")
       }
 
