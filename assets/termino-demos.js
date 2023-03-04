@@ -95,7 +95,7 @@ async function basicTerminalApp() {
 
   // after called  - repeat function again (if not exit menu)
   if (termvalue != "3") {
-    setTimeout(basicTerminalApp, termvalue)
+    basicTerminalApp()
   }
 
 }
@@ -243,14 +243,14 @@ basicTerminalApp()
 
     } else {
       //  Handle error if your function is not found
-      if (term3inal_msg.length != 0) {
+      if (term3inal_msg.length === 0) {
         term3.output(term3inal_msg + " is not found")
       }
 
     }
 
     // after called  - repeat function again
-    setTimeout(AdvancedDemo, term3inal_msg);
+   AdvancedDemo();
 
   }
 
