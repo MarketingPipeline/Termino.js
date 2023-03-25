@@ -1,6 +1,6 @@
 /**!
  * @license Termino.js - A JavaScript library to make custom terminals in the browser with support for executing your own custom functions!
- * VERSION: 1.0.0
+ * VERSION: 1.0.2
  * LICENSED UNDER MIT LICENSE
  * MORE INFO CAN BE FOUND AT https://github.com/MarketingPipeline/Termino.js/
  */
@@ -10,30 +10,17 @@
 /* DEV & CONTRIBUTOR NOTES IE: TODO LIST -
 
 - NEED TO IMPROVE / WRITE DOCUMENTATION FOR LIBRARY - URGENT TASK NEEDS HELP BIG TIME!
-  - CREATE DOCUMENATION WEBSITE HOSTED VIA GITHUB PAGES BRANCH
+  - CREATE DOCUMENTATION WEBSITE HOSTED VIA GITHUB PAGES BRANCH
   - REMOVE WIKI FROM REPO.
-- NEED TO IMPROVE USAGE OF LOOPING INPUTS / ASKING USER FOR INPUTS CONSTANTLY...? (ANY SUGGESTIONS APPRECIATED)  
-- SUPPORT FOR MULTIPLE KEYBINDS / KEYBOARD SHORT CUTS (VIA MOUSETRAP ON NPM / GITHUB)
-- POSSIBILY MAKE PLUGINS / FUNCTIONS THAT CAN BE SHARED.
-  - CREATE TEMPLATE TO USE PLUGIN / CREATE PLUGINS 
-  - PLUGIN FOR CREATING TERMINAL ANIMATIONS VIA A TYPEWRITER / TYPING LIBRARY ETC.. 
-  - PLUGIN FOR PLAYING PRE-RECORDED TERMINAL ANIMATIONS. 
+- SUPPORT FOR MULTIPLE KEYBINDS / KEYBOARD SHORT CUTS (VIA MOUSETRAP ETC ON NPM / GITHUB)
 - IMPROVE ERROR HANDLING (CHECK IF PASSED PROPER ARGUMENTS - CHECK IF VARIABLE IS ARRAY TYPE / JSON TYPE ETC...)
-- CODE CLEANING - USE CONST INSTEAD OF LET VARIABLES WHEN CAN.
-  - CLEAN / IMPROVE FILTER FUNCTION. 
 - REMOVE EVENT HANDLERS WHEN TERMINAL INSTANCE IS KILLED. 
-- MAKE THIS A EXPORT THIS AS WELL & GLOBAL IN SAME SCRIPT....? (DISCUSSION) 
-- INTERATION OBERSERVER FOR ANIMATIONS / POSSIBLY ALL INSTANCES. 
-- DOM OBSERVER (FOR NEW TERMINALS IN DOM) 
-- ADD ANY POLYFILL SUPPORTS NEEDED / UNTHOUGHT OF. 
 - CREATE TESTS + ACTION / WORKFLOW
   - BROWSER AUTOMATION TESTS VIA PUPPETEER ETC (CHECK ALL DEVICES / BROWSER COMPABILITY + POSSIBLY SCREENSHOTS). 
   - OTHER TESTS. 
   - CREATE ACTION THAT AUTO TESTS ON PR.
   - IF ANYONE COULD HELP WRITING TESTS / THESE WOULD BE APPRECIATED. 
 - LOTS OF OTHER IMPROVEMENTS THAT CAN BE MADE THO THIS. IF YOU ARE WILLING TO IMPROVE IT. FEEL FREE! :)
-
-
 
 */
 
@@ -43,6 +30,13 @@ import 'https://polyfill.io/v3/polyfill.min.js?features=Array.prototype.filter,c
 export function Termino(terminalSelector, keyCodes, settings) {
 
   try {
+      // CHECK IF QUERY SELECTOR WAS PROVIDED
+    if(!terminalSelector){
+      throw({message:"No Query Selector was provided."})
+      return;
+    }
+
+    
     // DEFAULT TERMINAL SETTINGS   
     let DEF_SETTINGS = {
       allow_scroll: true, // allow scroll up & down on terminal 
@@ -57,8 +51,18 @@ export function Termino(terminalSelector, keyCodes, settings) {
     /// ALLOW DEVS TO PASS CUSTOM SETTINGS FOR TERMINAL
     if (settings) {
       // function to compare custom settings
-      function compare(a, b) {
-        return JSON.stringify(a) === JSON.stringify(b);
+      function compare(json1, json2) {
+        let keys1 = Object.keys(json1);
+        let keys2 = Object.keys(json2);
+        if (keys1.length != keys2.length) {
+          return false;
+        }
+        for (var i = 0; i < keys1.length; i++) {
+          if (keys1[i] != keys2[i]) {
+            return false;
+          }
+        }
+        return true;
       }
       // CUSTOM SETTINGS PASSED ARE NOT VALID
       if (compare(DEF_SETTINGS, settings) != true) {
@@ -90,12 +94,12 @@ export function Termino(terminalSelector, keyCodes, settings) {
 
 
     // DEFAULT SCROLL BTNS
+    
+    /// UP ARROW
+    let Scroll_Up_Key = KEYCODES[0].key_code
 
     /// DOWN ARROW
-    let Scroll_Down_Key = KEYCODES.filter(x => x.id === "SCROLL_DOWN_KEY")[0].key_code
-
-    /// UP ARROW
-    let Scroll_Up_Key = KEYCODES.filter(x => x.id === "SCROLL_UP_KEY")[0].key_code
+    let Scroll_Down_Key = KEYCODES[1].key_code
 
 
 
@@ -153,8 +157,10 @@ export function Termino(terminalSelector, keyCodes, settings) {
       }
     });
 
-
-
+    
+    
+    
+  
 
     // TERMINAL INPUT STATE / TERMINAL PROMPT FUNCTION  
     let InputState = false;
