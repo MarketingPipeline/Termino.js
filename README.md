@@ -53,7 +53,7 @@ How to use **_Termino.js_**:
       <textarea class="termino-input" rows="1" wrap="hard"></textarea>
       </div>
       <script type="module">
-        import {Termino} from 'https://cdn.jsdelivr.net/gh/MarketingPipeline/Termino.js@v1.0.1/dist/termino.min.js';
+        import {Termino} from 'https://cdn.jsdelivr.net/gh/MarketingPipeline/Termino.js@v1.0.2/dist/termino.min.js';
         let term= Termino(document.getElementById("terminal"))
         term.echo("Hello world from https://github.com/MarketingPipeline")
       </script>
