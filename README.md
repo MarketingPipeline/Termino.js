@@ -29,8 +29,6 @@ _ie:_ You can use this JavaScript library to create web based terminals on any w
 
 ## Documentation
 
-> Note: this is **(v1.0.1 release)** - there is little to NO documentation. This project needs contributors like you to help improve documentation, usage & more!
-
 You can find the Termino.js documentation [here](https://github.com/MarketingPipeline/Termino.js/wiki).  
 
 Check out the [Getting Started](https://github.com/MarketingPipeline/Termino.js/wiki/Getting-Started) for a quick overview.
