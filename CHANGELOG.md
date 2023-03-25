@@ -2,6 +2,15 @@
 
 All notable changes to Termino.js will be documented in this file.
 
+## [1.0.2] - (Mar 25, 2023)
+
+This version addresses the following - 
+
+- Fixed a embarrassing error that made it's way into production. The option to over-ride default settings was not working correctly.  
+
+- Small code cleaning / improvements / touch-ups.
+
+
 ## [1.0.1] - (Mar 3, 2023)
 
 Updated & fixed ```package.json```. 
@@ -18,6 +27,7 @@ These Markdown anchors provide a link to the diff for each release. They should 
 updated any time a new release is cut.
 -->
 
+[1.0.2]: /v1.0.2
 [1.0.1]: /v1.0.1
 [1.0.0]: /v1.0.0
 
