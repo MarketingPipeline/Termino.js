@@ -2,13 +2,13 @@
 
 
 
-**[User Showcase](https://github.com/MarketingPipeline/Termino.js/blob/gh-pages/showcase.md)** | **[Live Demo](https://marketingpipeline.github.io/Termino.js/demo)** | **[Getting Started](https://github.com/MarketingPipeline/Termino.js/wiki/Getting-Started)** | **[Documentation](https://github.com/MarketingPipeline/Termino.js/wiki)** | **[GitHub](https://github.com/MarketingPipeline/Termino.js/)**
+**[User Showcase](https://github.com/MarketingPipeline/Termino.js/blob/gh-pages/showcase.md)** | **[Live Demo](https://marketingpipeline.github.io/Termino.js/demo)** | **[Getting Started](https://github.com/MarketingPipeline/Termino.js/wiki/1.-Getting-Started)** | **[Documentation](https://github.com/MarketingPipeline/Termino.js/wiki)** | **[GitHub](https://github.com/MarketingPipeline/Termino.js/)**
 
 Termino.js is a highly customizable front-end component written in pure JavaScript that is great for making web based terminal animations, games & apps on any website including support for curses-based apps, custom functions on user commands, key-code & mouse events & much more!
 
 _ie:_ You can use this JavaScript library to create web based terminals on any website.
 
-[Learn how to use Termino.js in your project](https://github.com/MarketingPipeline/Termino.js/wiki/Getting-Started).
+[Learn how to use Termino.js in your project](https://github.com/MarketingPipeline/Termino.js/wiki/1.-Getting-Started).
 
 ## Features <img height="20px" src="https://user-images.githubusercontent.com/86180097/196882869-d38fe649-8e33-44fe-ae91-b1f9cd5f1c3e.png">
 
@@ -31,7 +31,7 @@ _ie:_ You can use this JavaScript library to create web based terminals on any w
 
 You can find the Termino.js documentation [here](https://github.com/MarketingPipeline/Termino.js/wiki).  
 
-Check out the [Getting Started](https://github.com/MarketingPipeline/Termino.js/wiki/Getting-Started) for a quick overview.
+Check out the [Getting Started](https://github.com/MarketingPipeline/Termino.js/wiki/1.-Getting-Started) for a quick overview.
 
 You can improve it by sending pull requests to [this repository](https://github.com/MarketingPipeline/Termino.js).
 
