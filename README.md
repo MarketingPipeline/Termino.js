@@ -22,7 +22,7 @@ _ie:_ You can use this JavaScript library to create web based terminals on any w
 - **Custom functions**: Create your own custom functions with ease (including user-command functions, key-code functions & your own mouse event functions)
 - **And much more**: the options are endless!
 
-## Termino.js is not <img height="20px" alt="Emoji hand pointing left" src="https://zefir.site/emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/lg/57/white-left-pointing-backhand-index_1f448.png">
+## Termino.js is not <img height="20px" alt="Emoji hand pointing left" src="https://github.com/MarketingPipeline/Termino.js/assets/86180097/b91b74ad-d98c-4157-b2d4-8b7949992ad4">
 
 - Termino.js is not a executable application that you can download and use on your computer. It is a JavaScript library you use in the **browser**.
 - Termino.js is not a `bash` emulator etc. Termino.js can be connected to processes like `bash`  or a `SSH` instance via API etc or any process that lets you interact with them by providing input & receiving output.
