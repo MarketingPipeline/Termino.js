@@ -2,6 +2,15 @@
 
 All notable changes to Termino.js will be documented in this file.
 
+## [2.0.0] - (July 3, 2024)
+
+This version addresses the following:
+
+- Removed polyfill service: Due to security risks associated with compromised domain, all references have been removed.
+- Breaking code fix due to polyfill service fetch failing.
+
+Older versions of Termino.js should be COMPLETELY avoided. 
+
 ## [1.0.2] - (Mar 25, 2023)
 
 This version addresses the following - 
