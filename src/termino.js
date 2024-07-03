@@ -1,6 +1,6 @@
 /**!
  * @license Termino.js - A JavaScript library to make custom terminals in the browser with support for executing your own custom functions!
- * VERSION: 1.0.2
+ * VERSION: 2.0.0
  * LICENSED UNDER MIT LICENSE
  * MORE INFO CAN BE FOUND AT https://github.com/MarketingPipeline/Termino.js/
  */
@@ -24,8 +24,8 @@
 
 */
 
-// POLYFILL SUPPORT (AUTO-DETECTED ON LOAD FOR DEVICE)
-import 'https://polyfill.io/v3/polyfill.min.js?features=Array.prototype.filter,console,document,JSON,Promise'
+// POLYFILL SUPPORT (AUTO-DETECTED ON LOAD FOR DEVICE) - REMOVED AS OF V2.0.0
+// import 'https://polyfill.io/v3/polyfill.min.js?features=Array.prototype.filter,console,document,JSON,Promise'
 
 export function Termino(terminalSelector, keyCodes, settings) {
 
